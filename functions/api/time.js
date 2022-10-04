@@ -9,7 +9,7 @@ export async function onRequest(context) {
       data, // arbitrary space for passing data between middlewares
     } = context;
   
-  
+    console.log(context)
     return new Response("Hello, world!");
   
   }
