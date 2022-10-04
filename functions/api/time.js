@@ -1,16 +1,11 @@
+const axios = require("axios");
 export async function onRequest(context) {
-    // Contents of context object
-    const {
-      request, // same as existing Worker API
-      env, // same as existing Worker API
-      params, // if filename includes [id] or [[path]]
-      waitUntil, // same as ctx.waitUntil in existing Worker API
-      next, // used for middleware or to fetch assets
-      data, // arbitrary space for passing data between middlewares
-    } = context;
-  
-    console.log(context)
-    return new Response("Hello, world!");
-  
-  }
-  
+
+  const res = await axios.get(
+    "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-bd014528-0154-4322-be1d-f81ddc5d45c0/d6cf05a1-229e-45b2-9acb-bb946d2df2df.jpg",
+    {
+      responseType: "arraybuffer",
+    }
+  );
+  return new Response(res.data);
+}
